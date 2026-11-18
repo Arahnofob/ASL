@@ -78,7 +78,7 @@ export default function Settings() {
           label="Remind me to study"
           value={s.reminderOn}
           onChange={async (v) => {
-            if (v && !(await allowReminders())) return alert('Notifications are turned off for Signs. Allow them in iPhone Settings → Notifications → Signs, then try again.');
+            if (v && !(await allowReminders())) return alert('Notifications are turned off for Mano. Allow them in iPhone Settings → Notifications → Mano, then try again.');
             set('reminderOn', v);
           }}
           last={!s.reminderOn}

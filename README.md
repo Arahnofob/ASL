@@ -1,4 +1,6 @@
-# Signs
+# Mano 🤟
+
+*Mano* means "hand" in Spanish and Italian.
 
 A personal flashcard app for learning ASL vocabulary. It is built on the same engine as Mémot:
 spaced repetition with the FSRS scheduler, no limits and no subscriptions. Each card holds a
@@ -35,17 +37,17 @@ you're allowed to keep: your own recordings, or clips your teacher shared with y
 ## Installing on the iPhone (free, no App Store)
 
 Every push to `main` (or to a `claude/…` work branch) builds the app on GitHub and publishes
-**`Signs.ipa`** under **Releases** (right side of the repo page). The IPA is unsigned. AltStore
+**`Mano.ipa`** under **Releases** (right side of the repo page). The IPA is unsigned. AltStore
 signs it with your free Apple ID when it installs. Download it, then AirDrop or send the file to
 the iPhone or Mac.
 
-Signs has its own bundle ID (`com.arahnofob.signs`), so it installs **next to** Mémot and doesn't
+Mano has its own bundle ID (`com.arahnofob.mano`), so it installs **next to** Mémot and doesn't
 touch your French cards.
 
 Each build is numbered: the version is `1.0.<build number>`, shown at the bottom of Settings.
 
 Shortcut from the Mac: hold **Option** and click the AltServer menu-bar icon → **Sideload .ipa…**
-→ pick `Signs.ipa` with the iPhone connected.
+→ pick `Mano.ipa` with the iPhone connected.
 
 ### One-time setup (with the Mac)
 
@@ -56,8 +58,8 @@ Shortcut from the Mac: hold **Option** and click the AltServer menu-bar icon →
 5. On the iPhone:
    - **Settings → General → VPN & Device Management** → trust the Apple ID's developer profile.
    - **Settings → Privacy & Security → Developer Mode** → on. The phone restarts.
-6. Download `Signs.ipa` from the latest Release and save it to Files (or AirDrop it to the phone).
-7. Open **AltStore → My Apps → +** and pick `Signs.ipa`.
+6. Download `Mano.ipa` from the latest Release and save it to Files (or AirDrop it to the phone).
+7. Open **AltStore → My Apps → +** and pick `Mano.ipa`.
 
 ### Keeping it running
 
@@ -68,13 +70,13 @@ Shortcut from the Mac: hold **Option** and click the AltServer menu-bar icon →
 
 ### Updating
 
-Download the new `Signs.ipa` from Releases and install it the same way through AltStore. The bundle ID
+Download the new `Mano.ipa` from Releases and install it the same way through AltStore. The bundle ID
 stays the same, so cards and progress are kept. Making a backup first is still a good habit.
 
 ## Moving cards from AnkiApp
 
 1. In AnkiApp, open the deck → **Export** → XML. This gives a `.zip` with the cards and any audio. Save it to Files.
-2. In Signs, tap **Import** → **Choose file** → pick the zip → **Import**.
+2. In Mano, tap **Import** → **Choose file** → pick the zip → **Import**.
 
 AnkiApp's export doesn't include review history, so imported cards start as new. Exact duplicate
 cards are skipped. Turn that off on the import screen if you want them.

@@ -54,13 +54,13 @@ export default function Home() {
 
   return (
     <View style={{ flex: 1, backgroundColor: t.bg }}>
-      <Stack.Screen options={{ headerShown: false, title: 'Signs' }} />
+      <Stack.Screen options={{ headerShown: false, title: 'Mano' }} />
       <ScrollView contentContainerStyle={{ paddingTop: insets.top + 12, paddingBottom: insets.bottom + 32, paddingHorizontal: 16, gap: 18 }}>
         {/* Title row */}
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <View style={{ flex: 1 }}>
             <Text style={{ color: t.muted, fontSize: 15 }}>{greeting(now)} 🤟</Text>
-            <Text style={{ color: t.text, fontSize: 34, fontWeight: '700', fontFamily: SERIF }}>Signs</Text>
+            <Text style={{ color: t.text, fontSize: 34, fontWeight: '700', fontFamily: SERIF }}>Mano</Text>
           </View>
           <RoundButton icon="settings-outline" label="Settings" onPress={() => router.push('/settings')} />
         </View>

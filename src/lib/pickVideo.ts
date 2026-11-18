@@ -29,7 +29,7 @@ export async function videoFromPhotos(): Promise<string | null> {
 /** Record a video with the camera (e.g. your teacher signing a word, with their permission). */
 export async function videoFromCamera(): Promise<string | null> {
   const perm = await ImagePicker.requestCameraPermissionsAsync();
-  if (!perm.granted) throw new Error('Camera access is off. Allow it in iPhone Settings → Signs → Camera.');
+  if (!perm.granted) throw new Error('Camera access is off. Allow it in iPhone Settings → Mano → Camera.');
   const r = await ImagePicker.launchCameraAsync({
     mediaTypes: ['videos'],
     allowsEditing: true,

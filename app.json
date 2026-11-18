@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "Signs",
-    "slug": "signs",
+    "name": "Mano",
+    "slug": "mano",
     "version": "1.0.0",
-    "scheme": "signs",
+    "scheme": "mano",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "bundleIdentifier": "com.arahnofob.signs",
+      "bundleIdentifier": "com.arahnofob.mano",
       "buildNumber": "1",
       "supportsTablet": true,
       "infoPlist": {
@@ -18,7 +18,7 @@
       }
     },
     "android": {
-      "package": "com.arahnofob.signs",
+      "package": "com.arahnofob.mano",
       "adaptiveIcon": {
         "backgroundColor": "#0B4A44",
         "foregroundImage": "./assets/android-icon-foreground.png",
@@ -35,15 +35,15 @@
       [
         "expo-audio",
         {
-          "microphonePermission": "Signs records sound with the videos you film of signs."
+          "microphonePermission": "Mano records sound with the videos you film of signs."
         }
       ],
       [
         "expo-image-picker",
         {
-          "photosPermission": "Signs uses your photo library so you can add sign videos to your cards.",
-          "cameraPermission": "Signs uses the camera so you can film signs for your cards.",
-          "microphonePermission": "Signs records sound with the videos you film of signs."
+          "photosPermission": "Mano uses your photo library so you can add sign videos to your cards.",
+          "cameraPermission": "Mano uses the camera so you can film signs for your cards.",
+          "microphonePermission": "Mano records sound with the videos you film of signs."
         }
       ]
     ]

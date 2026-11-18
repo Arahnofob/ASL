@@ -75,20 +75,20 @@ jobs:
           echo "App bundle: $APP"
           mkdir -p out/Payload
           cp -R "$APP" out/Payload/
-          (cd out && zip -qry ../Signs.ipa Payload)
-          ls -lh Signs.ipa
+          (cd out && zip -qry ../Mano.ipa Payload)
+          ls -lh Mano.ipa
 
       - uses: actions/upload-artifact@v4
         with:
-          name: Signs-ipa
-          path: Signs.ipa
+          name: Mano-ipa
+          path: Mano.ipa
 
       - name: Publish GitHub Release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           TAG="build-${{ github.run_number }}"
-          gh release create "$TAG" Signs.ipa \
-            --title "Signs build ${{ github.run_number }}" \
+          gh release create "$TAG" Mano.ipa \
+            --title "Mano build ${{ github.run_number }}" \
             --notes "Unsigned IPA for AltStore / SideStore. Commit: ${{ github.sha }}" \
             --latest

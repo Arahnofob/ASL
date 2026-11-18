@@ -15,7 +15,7 @@ export function buildBackup(col: Collection): Uint8Array {
 
 export function backupFileName(now = new Date()): string {
   const p = (n: number) => String(n).padStart(2, '0');
-  return `signs-backup-${now.getFullYear()}-${p(now.getMonth() + 1)}-${p(now.getDate())}.zip`;
+  return `mano-backup-${now.getFullYear()}-${p(now.getMonth() + 1)}-${p(now.getDate())}.zip`;
 }
 
 /** Media files no longer referenced by any note. */

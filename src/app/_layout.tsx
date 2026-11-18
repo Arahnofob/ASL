@@ -36,7 +36,7 @@ function ThemedStack() {
           headerTransparent: false,
         }}
       >
-        <Stack.Screen name="index" options={{ title: 'Signs', headerShown: false }} />
+        <Stack.Screen name="index" options={{ title: 'Mano', headerShown: false }} />
         <Stack.Screen name="edit" options={{ presentation: 'modal' }} />
         <Stack.Screen name="import" options={{ presentation: 'modal', title: 'Import' }} />
       </Stack>

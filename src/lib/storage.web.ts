@@ -1,6 +1,6 @@
 // Browser storage, used only for previewing / testing the app on the web.
 // The collection goes to localStorage; media stay in memory for the session.
-const KEY = 'signs.collection';
+const KEY = 'mano.collection';
 const media = new Map<string, { bytes: Uint8Array; url: string }>();
 
 export function loadCollectionText(): string | null {
