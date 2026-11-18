@@ -1,0 +1,51 @@
+{
+  "expo": {
+    "name": "Signs",
+    "slug": "signs",
+    "version": "1.0.0",
+    "scheme": "signs",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "bundleIdentifier": "com.arahnofob.signs",
+      "buildNumber": "1",
+      "supportsTablet": true,
+      "infoPlist": {
+        "UIFileSharingEnabled": true,
+        "LSSupportsOpeningDocumentsInPlace": true,
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "package": "com.arahnofob.signs",
+      "adaptiveIcon": {
+        "backgroundColor": "#0B4A44",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "output": "single"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-audio",
+        {
+          "microphonePermission": "Signs records sound with the videos you film of signs."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Signs uses your photo library so you can add sign videos to your cards.",
+          "cameraPermission": "Signs uses the camera so you can film signs for your cards.",
+          "microphonePermission": "Signs records sound with the videos you film of signs."
+        }
+      ]
+    ]
+  }
+}

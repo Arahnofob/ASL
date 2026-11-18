@@ -1,0 +1,94 @@
+# Builds an UNSIGNED iPhone app (.ipa) on GitHub's free macOS machines.
+# The IPA is signed on install by AltStore / SideStore with your own free Apple ID.
+# Result: attached to a GitHub Release (and as a workflow artifact).
+name: Build iOS app
+
+on:
+  push:
+    branches: [main, 'claude/**']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ios-build
+  cancel-in-progress: true
+
+jobs:
+  ios:
+    runs-on: macos-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Tests, typecheck, lint
+        run: |
+          npm test
+          npx tsc --noEmit
+          npx expo lint
+
+      - name: Xcode version
+        run: xcodebuild -version
+
+      - name: Stamp version (1.0.<build number>)
+        run: |
+          node -e '
+            const fs = require("fs");
+            const a = JSON.parse(fs.readFileSync("app.json", "utf8"));
+            const n = process.env.GITHUB_RUN_NUMBER;
+            a.expo.version = "1.0." + n;
+            a.expo.ios.buildNumber = n;
+            fs.writeFileSync("app.json", JSON.stringify(a, null, 2));
+            console.log("version", a.expo.version);
+          '
+
+      - name: Generate native iOS project
+        run: npx expo prebuild --platform ios --clean
+        env:
+          EXPO_NO_TELEMETRY: 1
+
+      - name: Build (Release, unsigned)
+        run: |
+          set -o pipefail
+          WS=$(ls -d ios/*.xcworkspace | head -1)
+          SCHEME=$(basename "$WS" .xcworkspace)
+          echo "Workspace: $WS  Scheme: $SCHEME"
+          xcodebuild -quiet \
+            -workspace "$WS" -scheme "$SCHEME" \
+            -configuration Release -sdk iphoneos -destination 'generic/platform=iOS' \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" \
+            build
+
+      - name: Package IPA
+        run: |
+          APP=$(ls -d build/Build/Products/Release-iphoneos/*.app | head -1)
+          echo "App bundle: $APP"
+          mkdir -p out/Payload
+          cp -R "$APP" out/Payload/
+          (cd out && zip -qry ../Signs.ipa Payload)
+          ls -lh Signs.ipa
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Signs-ipa
+          path: Signs.ipa
+
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="build-${{ github.run_number }}"
+          gh release create "$TAG" Signs.ipa \
+            --title "Signs build ${{ github.run_number }}" \
+            --notes "Unsigned IPA for AltStore / SideStore. Commit: ${{ github.sha }}" \
+            --latest
